@@ -1,6 +1,6 @@
 # Arnel Malubay - Data Scientist Portfolio
 
-Welcome to my professional portfolio website! This repository hosts my personal portfolio showcasing my work as a Data Scientist specializing in Health Informatics, AI Research, and Computational Mathematics.
+Welcome to my professional portfolio website! This repository hosts my personal portfolio showcasing my work as a Data Scientist specializing in Health Informatics, AI Research, and Computational Mathematics. I'm a Google Cloud Certified Associate Cloud Engineer and Summa Cum Laude graduate in Mathematics from ADMU.
 
 ## 🚀 Live Website
 
@@ -11,18 +11,20 @@ Visit the live portfolio at: [https://arnelmalubay.github.io](https://arnelmalub
 This is a responsive, modern portfolio website built with HTML, CSS, and JavaScript. It features:
 
 - **Responsive Design**: Works seamlessly across desktop, tablet, and mobile devices
-- **Customizable Project Showcase**: Easy-to-use function for adding new projects
-- **Interactive Project Ordering**: Sort projects by default order, alphabetical, or most recent
+- **Customizable Project Showcase**: Easy-to-use function for adding new projects with flexible button text
+- **Backend Project Ordering**: Projects are automatically ordered by the "order" parameter
 - **Professional Introduction**: Highlighting my background in health informatics and AI research
-- **Collaboration Invitation**: Clear call-to-action for potential employers and collaborators
+- **Certification Links**: Direct links to verified credentials (Google Cloud Certified)
+- **Collaboration Invitation**: Clean, side-by-side layout for contact information
 
 ## 🛠️ Features
 
 ### Project Management
-- **Four-Parameter Project Function**: Easily add projects with title, URL, image, and description
-- **Flexible Ordering**: Drag-and-drop style ordering system
+- **Customizable Project Function**: Easily add projects with title, URL, image, description, and custom button text
+- **Backend Ordering**: Projects automatically sort by the "order" parameter for easy management
 - **Technology Tags**: Visual representation of technologies used in each project
-- **Direct Links**: Both project demo links and GitHub repository links
+- **Multiple Link Types**: Project demo links, GitHub repository links, and customizable button text
+- **Flexible Button Text**: Different button texts for different project types (e.g., "Try it Out!", "Read it Here!")
 
 ### Responsive Design
 - **Mobile-First Approach**: Optimized for all screen sizes
@@ -31,10 +33,10 @@ This is a responsive, modern portfolio website built with HTML, CSS, and JavaScr
 - **Accessibility**: Semantic HTML and proper contrast ratios
 
 ### Content Sections
-- **Hero Section**: Eye-catching introduction with call-to-action buttons
-- **About Section**: Professional background and technical skills
-- **Projects Section**: Interactive showcase of my work
-- **Contact Section**: Multiple ways to get in touch and collaborate
+- **Hero Section**: Eye-catching introduction with certification links and call-to-action buttons
+- **About Section**: Professional background, updated technical skills, and resume download
+- **Projects Section**: Two-column layout showcasing work with customizable button text
+- **Contact Section**: Side-by-side layout with collaboration message and contact information
 
 ## 📁 Project Structure
 
@@ -55,14 +57,39 @@ Use the built-in `addProject()` function in the browser console or modify the `p
 addProject(
     "Project Title",
     "https://project-url.com",
-    "https://image-url.com/project-image.jpg",
+    "assets/project-image.jpg",
     "Project description explaining what it does and technologies used.",
     {
         technologies: ["Python", "Machine Learning", "Data Science"],
         order: 7,
-        githubUrl: "https://github.com/username/repo"
+        githubUrl: "https://github.com/username/repo",
+        buttonText: "Try it Out!"  // Customizable button text
     }
 );
+```
+
+### Button Text Examples
+
+Customize the button text based on your project type:
+
+```javascript
+// For interactive applications
+buttonText: "Try it Out!"
+
+// For research papers and articles
+buttonText: "Read it Here!"
+
+// For live demonstrations
+buttonText: "View Demo"
+
+// For downloadable content
+buttonText: "Download"
+
+// For documentation
+buttonText: "Learn More"
+
+// For websites
+buttonText: "Live Site"
 ```
 
 ### Updating Project Order
@@ -80,11 +107,12 @@ removeProject("Project Title");
 ## 🔧 Technical Details
 
 ### Technologies Used
-- **HTML5**: Semantic markup and accessibility features
+- **HTML5**: Semantic markup and accessibility features with SEO optimization
 - **CSS3**: Flexbox, Grid, animations, and responsive design
-- **JavaScript (ES6+)**: Modern JavaScript with modular functions
+- **JavaScript (ES6+)**: Modern JavaScript with modular functions and project management
 - **Font Awesome**: Icons for enhanced visual appeal
 - **Google Fonts**: Inter font family for clean typography
+- **Assets Management**: Local image hosting for projects and profile photos
 
 ### Browser Support
 - Chrome 60+
@@ -101,12 +129,12 @@ removeProject("Project Title");
 
 ## 🎯 Current Projects Showcased
 
-1. **PDF Explainer using RAG** - Document analysis with RAG technology
-2. **Personal Assistant Chatbot** - NLP-powered assistant using Groq
-3. **Collatz Conjecture Visualizer** - Mathematical visualization tool
-4. **Julia Set Visualizer** - Fractal visualization with Gradio
-5. **Parameter-Efficient CNN Using Wavelet** - Deep learning research
-6. **Cellular Automata & Markov Chain Simulation** - Land use modeling
+1. **PDF Explainer using RAG** - Document analysis with RAG technology (Hugging Face Spaces)
+2. **Personal Assistant Chatbot** - NLP-powered assistant using Groq (Hugging Face Spaces)
+3. **Collatz Conjecture Visualizer** - Mathematical visualization tool (Hugging Face Spaces)
+4. **Julia Set Visualizer** - Fractal visualization with Gradio (Hugging Face Spaces)
+5. **Parameter-Efficient CNN Using Wavelet** - Published research paper in AIP Conference Proceedings
+6. **Cellular Automata & Markov Chain Simulation** - Comprehensive land use modeling project
 
 ## 📞 Contact & Collaboration
 
@@ -118,8 +146,9 @@ I'm always interested in discussing:
 
 **Contact Methods:**
 - GitHub: [@ArnelMalubay](https://github.com/ArnelMalubay)
-- Email: [Update with your email]
-- LinkedIn: [Update with your LinkedIn]
+- Email: iamarnelmalubay@gmail.com
+- LinkedIn: [Arnel Malubay](https://www.linkedin.com/in/arnel-malubay-7259341aa/)
+- Resume: [Download Resume](https://drive.google.com/file/d/1-XCdGrW4yedDTamhgbrTItP6eXYF5TmW/view?usp=sharing)
 
 ## 🚀 Deployment
 

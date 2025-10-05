@@ -81,9 +81,10 @@ body {
 
 /* Hero Section */
 .hero {
-    padding: 120px 0 60px;
+    padding: 120px 0 80px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
+    min-height: 80vh;
     display: flex;
     align-items: center;
 }
@@ -114,6 +115,20 @@ body {
     margin-bottom: 2rem;
     opacity: 0.9;
     line-height: 1.6;
+}
+
+.certification-link {
+    color: #fbbf24;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.certification-link:hover {
+    color: #f59e0b;
+    border-bottom-color: #fbbf24;
+    transform: translateY(-1px);
 }
 
 .hero-buttons {
@@ -176,16 +191,18 @@ body {
     align-items: center;
 }
 
-.profile-placeholder {
+.profile-photo {
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4rem;
-    color: rgba(255, 255, 255, 0.7);
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.05);
 }
 
 /* Section Styles */
@@ -376,8 +393,26 @@ section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    max-width: 800px;
+    align-items: center;
+    max-width: 1000px;
     margin: 0 auto;
+}
+
+.contact-text {
+    text-align: left;
+}
+
+.contact-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.contact-text p {
+    font-size: 1.125rem;
+    color: #6b7280;
+    line-height: 1.7;
 }
 
 .contact-info {
@@ -417,10 +452,6 @@ section {
     color: #2563eb;
 }
 
-.contact-item span {
-    color: #374151;
-    font-weight: 500;
-}
 
 .collaboration-cta {
     text-align: center;
@@ -515,10 +546,9 @@ section {
         justify-content: center;
     }
 
-    .profile-placeholder {
+    .profile-photo {
         width: 200px;
         height: 200px;
-        font-size: 3rem;
     }
 
     .section-header h2 {
@@ -541,6 +571,11 @@ section {
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        text-align: center;
+    }
+
+    .contact-text {
+        text-align: center;
     }
 
     .footer .container {

@@ -36,62 +36,68 @@ document.addEventListener('DOMContentLoaded', function() {
     const projectsData = [
         {
             title: "PDF Explainer using RAG",
-            description: "A simple Gradio app that allows you to upload PDF documents and ask questions about them using an LLM with RAG (Retrieval-Augmented Generation) technology. Perfect for document analysis and information extraction.",
-            image: "https://via.placeholder.com/400x200/667eea/ffffff?text=PDF+Explainer",
-            redirectUrl: "https://github.com/ArnelMalubay/pdf-explainer-using-rag",
+            description: "A simple Gradio app that allows you to upload PDF documents and ask questions about them using an LLM with RAG (Retrieval-Augmented Generation) technology. Perfect for simple document analysis and information extraction.",
+            image: "assets/pdf-explainer.jpg",
+            redirectUrl: "https://huggingface.co/spaces/arnel8888/pdf-explainer-using-RAG",
             githubUrl: "https://github.com/ArnelMalubay/pdf-explainer-using-rag",
+            buttonText : "Try it Out!",
             technologies: ["Python", "Gradio", "RAG", "LLM"],
             order: 1
         },
         {
             title: "Personal Assistant Chatbot",
             description: "A personal assistant chatbot implemented using Groq and Gradio. Features natural language processing capabilities and can assist with various tasks and queries.",
-            image: "https://via.placeholder.com/400x200/764ba2/ffffff?text=Chatbot",
-            redirectUrl: "https://github.com/ArnelMalubay/sample-personal-assistant-chatbot",
+            image: "assets/chatbot.jpg",
+            redirectUrl: "https://huggingface.co/spaces/arnel8888/sample-personal-assistant-chatbot",
             githubUrl: "https://github.com/ArnelMalubay/sample-personal-assistant-chatbot",
+            buttonText : "Try it Out!",
             technologies: ["Python", "Gradio", "Groq", "NLP"],
             order: 2
         },
         {
             title: "Collatz Conjecture Visualizer",
-            description: "A Gradio app that visualizes the paths made by numbers when subjected to the Collatz rule. An interactive exploration of this famous mathematical conjecture with beautiful visualizations.",
-            image: "https://via.placeholder.com/400x200/f59e0b/ffffff?text=Collatz+Viz",
-            redirectUrl: "https://github.com/ArnelMalubay/collatz-gradio",
+            description: "A Gradio app that visualizes the paths made by numbers when subjected to the Collatz rule. An interactive exploration of this famous mathematical conjecture with configurable visualizations.",
+            image: "assets/collatz-viz.jpg",
+            redirectUrl: "https://huggingface.co/spaces/arnel8888/collatz-branches-visualizer",
             githubUrl: "https://github.com/ArnelMalubay/collatz-gradio",
+            buttonText : "Try it Out!",
             technologies: ["Python", "Gradio", "Mathematics", "Visualization"],
             order: 3
         },
         {
             title: "Julia Set Visualizer",
-            description: "A Gradio implementation of Julia Set visualizer, previously deployed in Streamlit. Creates stunning fractal visualizations with interactive controls for mathematical exploration.",
-            image: "https://via.placeholder.com/400x200/ec4899/ffffff?text=Julia+Sets",
-            redirectUrl: "https://github.com/ArnelMalubay/julia-visualizer-using-gradio",
+            description: "A Gradio app that visualizes Julia sets. Creates stunning fractal visualizations with interactive controls for mathematical exploration.",
+            image: "assets/julia-sets.png",
+            redirectUrl: "https://huggingface.co/spaces/arnel8888/julia-set-visualizer",
             githubUrl: "https://github.com/ArnelMalubay/julia-visualizer-using-gradio",
+            buttonText : "Try it Out!",
             technologies: ["Python", "Gradio", "Fractals", "Mathematics"],
             order: 4
         },
         {
-            title: "Parameter-Efficient CNN Using Wavelet",
-            description: "My thesis project exploring parameter-efficient Convolutional Neural Networks using Wavelet Transforms. Includes comprehensive notebooks and research findings on optimizing neural network architectures.",
-            image: "https://via.placeholder.com/400x200/10b981/ffffff?text=Wavelet+CNN",
-            redirectUrl: "https://github.com/ArnelMalubay/Parameter-Efficient-CNN-Using-Wavelet",
+            title: "Parameter-Efficient CNN Using Wavelet Transforms",
+            description: "My thesis project that incorporates 2D wavelet transforms to create parameter-efficient Convolutional Neural Networks. This was eventually published in the American Institute of Physics Conference Proceedings.",
+            image: "assets/wavelet-cnn.jpg",
+            redirectUrl: "https://pubs.aip.org/aip/acp/article-abstract/2895/1/040012/3269703/Parameter-efficient-convolutional-neural-networks?redirectedFrom=fulltext",
             githubUrl: "https://github.com/ArnelMalubay/Parameter-Efficient-CNN-Using-Wavelet",
+            buttonText : "Read it Here!",
             technologies: ["Python", "Deep Learning", "CNN", "Wavelet Transforms"],
             order: 5
         },
         {
             title: "Cellular Automata & Markov Chain Simulation",
-            description: "A comprehensive land use change simulation project using cellular automata and Markov chains. Demonstrates advanced modeling techniques for spatial analysis and prediction.",
-            image: "https://via.placeholder.com/400x200/8b5cf6/ffffff?text=Cellular+Automata",
-            redirectUrl: "https://github.com/ArnelMalubay/Cellular-Automata-And-Markov-Chain-Simulation",
+            description: "A comprehensive land use change simulation project using cellular automata and Markov chains. Demonstrates advanced modeling techniques for spatial analysis and forecasting.",
+            image: "assets/cellular-automata.png",
+            redirectUrl: "https://drive.google.com/file/d/1jpvSGi6sNMaVF8NIaH6awOTyN5Py1f-F/view?usp=sharing",
             githubUrl: "https://github.com/ArnelMalubay/Cellular-Automata-And-Markov-Chain-Simulation",
+            buttonText : "Read it Here!",
             technologies: ["Python", "Cellular Automata", "Markov Chains", "Simulation"],
             order: 6
         }
     ];
 
     // Customizable Project Function
-    // This function allows you to easily add new projects with four main parameters
+    // This function allows you to easily add new projects with customizable parameters
     function createProjectCard(projectTitle, redirectUrl, image, description, additionalData = {}) {
         const project = {
             title: projectTitle,
@@ -100,7 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
             redirectUrl: redirectUrl,
             githubUrl: additionalData.githubUrl || redirectUrl,
             technologies: additionalData.technologies || [],
-            order: additionalData.order || projectsData.length + 1
+            order: additionalData.order || projectsData.length + 1,
+            buttonText: additionalData.buttonText || "Try it out!"
         };
         
         return project;
@@ -111,17 +118,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const projectLink = project.redirectUrl && project.redirectUrl.trim() !== '' 
             ? `<a href="${project.redirectUrl}" target="_blank" class="project-link">
                 <i class="fas fa-external-link-alt"></i>
-                Try it out!
+                ${project.buttonText}
               </a>`
             : '';
 
         return `
             <div class="project-card" data-order="${project.order}">
                 <div class="project-image">
-                    ${project.image ? `<img src="${project.image}" alt="${project.title}">` : ''}
-                    <div class="placeholder-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
+                    ${project.image ? `<img src="${project.image}" alt="${project.title}">` : '<div class="placeholder-icon"><i class="fas fa-code"></i></div>'}
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">${project.title}</h3>
@@ -187,14 +191,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Resume link placeholder
-    const resumeLink = document.getElementById('resume-link');
-    if (resumeLink) {
-        resumeLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Please update the resume link in the HTML file with your actual resume URL.');
-        });
-    }
 
     // Intersection Observer for animations
     const observerOptions = {
@@ -236,11 +232,20 @@ document.addEventListener('DOMContentLoaded', function() {
 addProject(
     "My New Project",
     "https://github.com/ArnelMalubay/my-new-project",
-    "https://via.placeholder.com/400x200/2563eb/ffffff?text=New+Project",
+    "assets/new-project.png",
     "Description of my amazing new project that showcases my skills.",
     {
         technologies: ["Python", "Machine Learning", "Data Science"],
-        order: 7
+        order: 7,
+        buttonText: "Try it out!"  // Customizable button text
     }
 );
+
+// Examples of different button texts for different project types:
+// - "Try it out!" (for interactive apps)
+// - "Read it here!" (for papers/articles)
+// - "View Demo" (for demos)
+// - "Download" (for downloadable files)
+// - "Learn More" (for documentation)
+// - "Live Site" (for websites)
 */

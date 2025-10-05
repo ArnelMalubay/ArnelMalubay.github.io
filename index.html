@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arnel Malubay - Data Scientist Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Arnel Malubay</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight">Arnel Malubay</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Data Scientist specializing in Health Informatics, AI Research, and Computational Mathematics
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Passionate about leveraging data science to solve real-world problems</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        I'm a Data Scientist currently working in the health informatics industry, with a deep interest in the research aspects of AI and computational mathematics. My work focuses on developing innovative solutions that bridge the gap between complex data analysis and practical healthcare applications.
+                    </p>
+                    <p>
+                        I'm passionate about exploring the intersection of machine learning, statistical modeling, and domain expertise to create meaningful impact in healthcare and beyond. My projects span from RAG-based document analysis to parameter-efficient neural networks and cellular automata simulations.
+                    </p>
+                    <div class="skills">
+                        <h3>Technical Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">Deep Learning</span>
+                            <span class="skill-tag">Data Analysis</span>
+                            <span class="skill-tag">Health Informatics</span>
+                            <span class="skill-tag">RAG Systems</span>
+                            <span class="skill-tag">Gradio</span>
+                            <span class="skill-tag">Jupyter Notebooks</span>
+                            <span class="skill-tag">Streamlit</span>
+                            <span class="skill-tag">Computational Mathematics</span>
+                        </div>
+                    </div>
+                    <div class="resume-section">
+                        <a href="#" class="btn btn-outline" id="resume-link">
+                            <i class="fas fa-download"></i> Download Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Explore my recent work and research projects</p>
+            </div>
+            
+            <!-- Project Ordering Controls -->
+            <div class="project-controls">
+                <button class="sort-btn active" data-sort="default">Default Order</button>
+                <button class="sort-btn" data-sort="alphabetical">Alphabetical</button>
+                <button class="sort-btn" data-sort="recent">Most Recent</button>
+            </div>
+
+            <div class="projects-grid" id="projects-grid">
+                <!-- Projects will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Collaborate</h2>
+                <p>I'm always interested in discussing new opportunities and collaborations</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <a href="https://github.com/ArnelMalubay" target="_blank">GitHub Profile</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:your.email@example.com">Email Me</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="#" target="_blank">LinkedIn Profile</a>
+                    </div>
+                </div>
+                <div class="collaboration-cta">
+                    <h3>Interested in Interviewing or Collaborating?</h3>
+                    <p>
+                        I'm open to discussing data science opportunities, research collaborations, 
+                        and innovative projects in health informatics and AI. Feel free to reach out!
+                    </p>
+                    <a href="mailto:your.email@example.com" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Arnel Malubay. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/ArnelMalubay" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

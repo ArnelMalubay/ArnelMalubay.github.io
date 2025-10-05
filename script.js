@@ -108,6 +108,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to render a single project card
     function renderProjectCard(project) {
+        const projectLink = project.redirectUrl && project.redirectUrl.trim() !== '' 
+            ? `<a href="${project.redirectUrl}" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt"></i>
+                Try it out!
+              </a>`
+            : '';
+
         return `
             <div class="project-card" data-order="${project.order}">
                 <div class="project-image">
@@ -120,10 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h3 class="project-title">${project.title}</h3>
                     <p class="project-description">${project.description}</p>
                     <div class="project-links">
-                        <a href="${project.redirectUrl}" target="_blank" class="project-link">
-                            <i class="fas fa-external-link-alt"></i>
-                            View Project
-                        </a>
+                        ${projectLink}
                         <a href="${project.githubUrl}" target="_blank" class="project-link github">
                             <i class="fab fa-github"></i>
                             GitHub
@@ -142,48 +146,27 @@ document.addEventListener('DOMContentLoaded', function() {
         projectsGrid.innerHTML = projects.map(project => renderProjectCard(project)).join('');
     }
 
-    // Project sorting functionality
-    function sortProjects(sortType) {
-        let sortedProjects = [...projectsData];
-        
-        switch(sortType) {
-            case 'alphabetical':
-                sortedProjects.sort((a, b) => a.title.localeCompare(b.title));
-                break;
-            case 'recent':
-                sortedProjects.sort((a, b) => b.order - a.order);
-                break;
-            case 'default':
-            default:
-                sortedProjects.sort((a, b) => a.order - b.order);
-                break;
-        }
-        
+    // Function to sort projects by order (backend ordering)
+    function sortProjectsByOrder() {
+        const sortedProjects = [...projectsData].sort((a, b) => a.order - b.order);
         renderProjects(sortedProjects);
     }
 
-    // Event listeners for sorting buttons
-    document.querySelectorAll('.sort-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remove active class from all buttons
-            document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Sort projects based on button data
-            const sortType = this.getAttribute('data-sort');
-            sortProjects(sortType);
-        });
-    });
+    // Initialize projects on page load with proper ordering
+    sortProjectsByOrder();
 
-    // Initialize projects on page load
-    renderProjects(projectsData);
+    // Set dynamic year in footer
+    const currentYear = new Date().getFullYear();
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = currentYear;
+    }
 
     // Add new project function (for easy customization)
     window.addProject = function(title, redirectUrl, image, description, additionalData = {}) {
         const newProject = createProjectCard(title, redirectUrl, image, description, additionalData);
         projectsData.push(newProject);
-        renderProjects(projectsData);
+        sortProjectsByOrder();
     };
 
     // Update project order function
@@ -191,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const project = projectsData.find(p => p.title === title);
         if (project) {
             project.order = newOrder;
-            renderProjects(projectsData);
+            sortProjectsByOrder();
         }
     };
 
@@ -200,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const index = projectsData.findIndex(p => p.title === title);
         if (index > -1) {
             projectsData.splice(index, 1);
-            renderProjects(projectsData);
+            sortProjectsByOrder();
         }
     };
 
@@ -244,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('- addProject(title, redirectUrl, image, description, additionalData)');
     console.log('- updateProjectOrder(title, newOrder)');
     console.log('- removeProject(title)');
+    console.log('- Projects are automatically ordered by the "order" parameter');
     console.log('- Current projects:', projectsData);
 });
 

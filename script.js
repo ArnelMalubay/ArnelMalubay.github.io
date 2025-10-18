@@ -42,17 +42,17 @@ document.addEventListener('DOMContentLoaded', function() {
             githubUrl: "https://github.com/ArnelMalubay/pdf-explainer-using-rag",
             buttonText : "Try it Out!",
             technologies: ["Python", "Gradio", "RAG", "LLM"],
-            order: 1
+            order: 4
         },
         {
-            title: "Personal Assistant Chatbot",
-            description: "A personal assistant chatbot implemented using Groq and Gradio. Features natural language processing capabilities and can assist with various tasks and queries.",
+            title: "ReAct Agentic Chatbot",
+            description: "A ReAct agent that has access to document analysis via RAG (Retrieval-Augmented Generation) and web search capabilities using Tavily. Can serve as a general-purpose chatbot for various tasks and queries.",
             image: "assets/chatbot.jpg",
-            redirectUrl: "https://huggingface.co/spaces/arnel8888/sample-personal-assistant-chatbot",
-            githubUrl: "https://github.com/ArnelMalubay/sample-personal-assistant-chatbot",
+            redirectUrl: "https://huggingface.co/spaces/arnel8888/react-agent-ai-assistant",
+            githubUrl: "https://github.com/ArnelMalubay/react-agent-ai-assistant",
             buttonText : "Try it Out!",
-            technologies: ["Python", "Gradio", "Groq", "NLP"],
-            order: 2
+            technologies: ["Python", "Gradio", "Groq", "NLP", 'Tavily'],
+            order: 1
         },
         {
             title: "Collatz Conjecture Visualizer",
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             githubUrl: "https://github.com/ArnelMalubay/collatz-gradio",
             buttonText : "Try it Out!",
             technologies: ["Python", "Gradio", "Mathematics", "Visualization"],
-            order: 3
+            order: 6
         },
         {
             title: "Julia Set Visualizer",
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             githubUrl: "https://github.com/ArnelMalubay/julia-visualizer-using-gradio",
             buttonText : "Try it Out!",
             technologies: ["Python", "Gradio", "Fractals", "Mathematics"],
-            order: 4
+            order: 5
         },
         {
             title: "Parameter-Efficient CNN Using Wavelet Transforms",
@@ -82,17 +82,17 @@ document.addEventListener('DOMContentLoaded', function() {
             githubUrl: "https://github.com/ArnelMalubay/Parameter-Efficient-CNN-Using-Wavelet",
             buttonText : "Read it Here!",
             technologies: ["Python", "Deep Learning", "CNN", "Wavelet Transforms"],
-            order: 5
+            order: 2
         },
         {
             title: "Cellular Automata & Markov Chain Simulation",
             description: "A comprehensive land use change simulation project using cellular automata and Markov chains. Demonstrates advanced modeling techniques for spatial analysis and forecasting.",
-            image: "assets/cellular-automata.png",
+            image: "assets/land-change.png",
             redirectUrl: "https://drive.google.com/file/d/1jpvSGi6sNMaVF8NIaH6awOTyN5Py1f-F/view?usp=sharing",
             githubUrl: "https://github.com/ArnelMalubay/Cellular-Automata-And-Markov-Chain-Simulation",
             buttonText : "Read it Here!",
             technologies: ["Python", "Cellular Automata", "Markov Chains", "Simulation"],
-            order: 6
+            order: 3
         }
     ];
 

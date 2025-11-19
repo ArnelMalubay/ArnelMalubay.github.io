@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             githubUrl: "https://github.com/ArnelMalubay/pdf-explainer-using-rag",
             buttonText : "Try it Out!",
             technologies: ["Python", "Gradio", "RAG", "LLM"],
-            order: 4
+            order: 5
         },
         {
             title: "ReAct Agentic Chatbot",
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             githubUrl: "https://github.com/ArnelMalubay/react-agent-ai-assistant",
             buttonText : "Try it Out!",
             technologies: ["Python", "Gradio", "Groq", "NLP", 'Tavily'],
-            order: 1
+            order: 2
         },
         {
             title: "Collatz Conjecture Visualizer",
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             githubUrl: "https://github.com/ArnelMalubay/collatz-gradio",
             buttonText : "Try it Out!",
             technologies: ["Python", "Gradio", "Mathematics", "Visualization"],
-            order: 6
+            order: 7
         },
         {
             title: "Julia Set Visualizer",
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             githubUrl: "https://github.com/ArnelMalubay/julia-visualizer-using-gradio",
             buttonText : "Try it Out!",
             technologies: ["Python", "Gradio", "Fractals", "Mathematics"],
-            order: 5
+            order: 6
         },
         {
             title: "Parameter-Efficient CNN Using Wavelet Transforms",
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             githubUrl: "https://github.com/ArnelMalubay/Parameter-Efficient-CNN-Using-Wavelet",
             buttonText : "Read it Here!",
             technologies: ["Python", "Deep Learning", "CNN", "Wavelet Transforms"],
-            order: 2
+            order: 3
         },
         {
             title: "Cellular Automata & Markov Chain Simulation",
@@ -92,7 +92,27 @@ document.addEventListener('DOMContentLoaded', function() {
             githubUrl: "https://github.com/ArnelMalubay/Cellular-Automata-And-Markov-Chain-Simulation",
             buttonText : "Read it Here!",
             technologies: ["Python", "Cellular Automata", "Markov Chains", "Simulation"],
-            order: 3
+            order: 4
+        },
+        {
+            title: "Pasig Full Disclosure API",
+            description: "A free-to-use REST API to access Pasig City government transparency documents including resolutions, ordinances, executive orders, and bids & awards information. Built using FastAPI and BeautifulSoup.",
+            image: "assets/pasig.png",
+            redirectUrl: "https://arnel8888-pasig-full-disclosure-api.hf.space/docs#/",
+            githubUrl: "https://github.com/ArnelMalubay/pasig-full-disclosure-api",
+            buttonText : "Try it Here!",
+            technologies: ["Python", "FastAPI", "BeautifulSoup", "Web Scraping"],
+            order: 1
+        },
+        {
+            title: "Scoliosis Identification via Transfer Learning",
+            description: "A collection of project files and other related documents for my internship at the Nara Institute of Science and Technology (NAIST) where I trained a CNN to detect scoliosis in X-ray images using transfer learning.",
+            image: "assets/scoliosis.png",
+            redirectUrl: "https://drive.google.com/file/d/12361MbVaYKruyu9N6lP3nf-zPwxKKzBT/view?usp=sharing",
+            githubUrl: "https://github.com/ArnelMalubay/NAPI-Internship",
+            buttonText : "Read it Here!",
+            technologies: ["Python", "Deep Learning", "CNN", "Transfer Learning", "Computer Vision"],
+            order: 8
         }
     ];
 

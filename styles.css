@@ -161,6 +161,7 @@ body {
 
 .hero-buttons {
     display: flex;
+    justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
 }

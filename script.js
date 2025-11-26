@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "assets/pasig.png",
             redirectUrl: "https://arnel8888-pasig-full-disclosure-api.hf.space/docs#/",
             githubUrl: "https://github.com/ArnelMalubay/pasig-full-disclosure-api",
-            buttonText : "Try it Here!",
+            buttonText : "Try it Out!",
             technologies: ["Python", "FastAPI", "BeautifulSoup", "Web Scraping"],
             order: 1
         },

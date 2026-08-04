@@ -1,6 +1,19 @@
 // Shared data validation. Runs in the browser (js/main.js) and under Node
 // (tools/check-data.js). Never throws — bad data degrades, it does not blank
 // the page.
+
+// The file each global lives in, so a message can name the file to open.
+const PORTFOLIO_DATA_FILES = {
+  siteData: "data/site.js",
+  projectCategories: "data/projects.js",
+  projectsData: "data/projects.js",
+  experienceData: "data/experience.js",
+  certificationsData: "data/certifications.js",
+  educationData: "data/education.js",
+  publicationsData: "data/publications.js",
+  skillsData: "data/skills.js",
+};
+
 function validatePortfolioData(data) {
   const issues = [];
   const error = (message) => issues.push({ level: "error", message });
@@ -40,31 +53,54 @@ function validatePortfolioData(data) {
   };
 
   // Returns only the entries that passed — a bad entry is skipped, never
-  // rendered as a blank card.
-  const checkList = (key, list, label, requiredFields) => {
+  // rendered as a blank card. `emptyEffect` spells out what actually happens
+  // when the list is missing or empty, so the message matches the page.
+  const checkList = (key, list, label, requiredFields, emptyEffect) => {
+    const file = PORTFOLIO_DATA_FILES[key] || key;
     if (list === undefined) {
-      warn(`${key} is not defined yet — its section will be hidden`);
+      warn(`${key} is not defined yet in ${file} — ${emptyEffect}`);
       return [];
     }
     if (!Array.isArray(list)) {
-      error(`${key} must be an array, got ${typeof list}`);
+      error(`${key} in ${file} must be an array, got ${typeof list}`);
       return [];
     }
     if (list.length === 0) {
-      warn(`${key} is empty — its section will be hidden`);
+      warn(`${key} is empty — ${emptyEffect}`);
       return [];
     }
-    return list.filter((entry, index) => {
-      const ok = requireFields(`${label} #${index + 1}`, entry, requiredFields);
-      if (!ok) warn(`${key}[${index}] was skipped because of the error above`);
-      return ok;
-    });
+    // Indexed loop, not .filter: filter silently skips array holes, and a
+    // stray double comma (`[a,, b]`) is the easiest mistake to make when
+    // hand-editing these files. A hole has to be reported, not swallowed.
+    const kept = [];
+    for (let index = 0; index < list.length; index += 1) {
+      if (!(index in list)) {
+        error(
+          `${key}[${index}] in ${file} is an empty slot — probably a double comma in the array. Nothing renders for it.`
+        );
+        continue;
+      }
+      const entry = list[index];
+      if (requireFields(`${label} #${index + 1}`, entry, requiredFields)) {
+        kept.push(entry);
+      } else {
+        warn(`${key}[${index}] was skipped because of the error above`);
+      }
+    }
+    return kept;
   };
 
   // --- site ---
   let cleanSite;
   if (data.site === undefined) {
-    warn("siteData is not defined yet");
+    warn("siteData is not defined yet in data/site.js — the hero, About text, Contact, and footer will be hidden");
+  } else if (data.site === null || typeof data.site !== "object" || Array.isArray(data.site)) {
+    // Reject non-objects here rather than reading fields off them below:
+    // `data.site.seo` on a null site used to throw, and a throw escaping the
+    // validator aborts main.js before it can log anything.
+    error(
+      `siteData in data/site.js must be an object, got ${data.site === null ? "null" : typeof data.site} — the hero, About text, Contact, and footer will be hidden`
+    );
   } else {
     const valid = requireFields("siteData", data.site, [
       "name",
@@ -90,18 +126,25 @@ function validatePortfolioData(data) {
   }
 
   // --- projects ---
-  const categories =
-    data.categories === undefined
-      ? []
-      : checkList("projectCategories", data.categories, "Category", ["id", "label"]);
+  // No ternary here: an undefined projectCategories has to report something
+  // too, and without categories every project falls into the "Other" group
+  // rather than the section disappearing.
+  const categories = checkList(
+    "projectCategories",
+    data.categories,
+    "Category",
+    ["id", "label"],
+    'every project will render in a single "Other" group'
+  );
   const categoryIds = new Set(categories.map((category) => category.id));
 
-  const projects = checkList("projectsData", data.projects, "Project", [
-    "id",
-    "title",
-    "category",
-    "description",
-  ]);
+  const projects = checkList(
+    "projectsData",
+    data.projects,
+    "Project",
+    ["id", "title", "category", "description"],
+    "the Research & Projects section will be hidden"
+  );
   const seenIds = new Set();
   projects.forEach((project, index) => {
     const label = `Project #${index + 1} ("${project.title || "untitled"}")`;
@@ -130,11 +173,41 @@ function validatePortfolioData(data) {
     site: cleanSite,
     categories: categories,
     projects: projects,
-    experience: checkList("experienceData", data.experience, "Experience", ["company", "role", "start", "bullets"]),
-    certifications: checkList("certificationsData", data.certifications, "Certification", ["name", "issuer", "earned"]),
-    education: checkList("educationData", data.education, "Education", ["school", "degree", "start", "end"]),
-    publications: checkList("publicationsData", data.publications, "Publication", ["title", "venue", "date", "type"]),
-    skills: checkList("skillsData", data.skills, "Skill group", ["label", "items"]),
+    experience: checkList(
+      "experienceData",
+      data.experience,
+      "Experience",
+      ["company", "role", "start", "bullets"],
+      "the Experience section will be hidden"
+    ),
+    certifications: checkList(
+      "certificationsData",
+      data.certifications,
+      "Certification",
+      ["name", "issuer", "earned"],
+      "the Certifications section will be hidden"
+    ),
+    education: checkList(
+      "educationData",
+      data.education,
+      "Education",
+      ["school", "degree", "start", "end"],
+      "the Education list will be hidden; the section still renders if there are publications"
+    ),
+    publications: checkList(
+      "publicationsData",
+      data.publications,
+      "Publication",
+      ["title", "venue", "date", "type"],
+      "the Publications list will be hidden; the section still renders if there are degrees"
+    ),
+    skills: checkList(
+      "skillsData",
+      data.skills,
+      "Skill group",
+      ["label", "items"],
+      "the Technical Skills list will be hidden; the About section still renders"
+    ),
   };
 
   return { ok: issues.every((issue) => issue.level !== "error"), issues, clean };

@@ -34,6 +34,15 @@ document.addEventListener("DOMContentLoaded", function () {
     hideSection("skills-list");
   }
 
+  const projectGroups = groupProjects(clean.categories, clean.projects);
+  if (projectGroups.length > 0) {
+    mount("project-filters", sectionHeader("02", "Research & Projects") + renderProjectFilters(projectGroups));
+    mount("projects-body", renderProjectGroups(projectGroups));
+    initProjectFilters();
+  } else {
+    hideSection("projects-body");
+  }
+
   initTheme();
   initNav();
   initReveal();

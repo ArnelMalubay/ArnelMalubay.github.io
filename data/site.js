@@ -15,6 +15,10 @@ const siteData = {
   github: "https://github.com/ArnelMalubay",
   linkedin: "https://www.linkedin.com/in/arnel-malubay-7259341aa/",
   resumeUrl: "https://drive.google.com/file/d/1-XCdGrW4yedDTamhgbrTItP6eXYF5TmW/view?usp=sharing",
+  // Paragraph above the contact links. Optional — leave it out and the
+  // section renders the links on their own.
+  contactIntro:
+    "I'm open to conversations about technical AI safety research, data science roles, and research collaborations. The fastest way to reach me is email.",
   seo: {
     title: "Arnel Malubay — Data Scientist & AI Safety Researcher",
     description:

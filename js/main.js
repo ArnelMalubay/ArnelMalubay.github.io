@@ -20,51 +20,87 @@ document.addEventListener("DOMContentLoaded", function () {
     log(`[portfolio data] ${issue.message}`);
   });
 
-  if (clean.site) {
-    mount("hero", renderHero(clean.site));
-    if (clean.site.seo && clean.site.seo.title) {
-      document.title = clean.site.seo.title;
-    }
-    mount("about-body", renderAbout(clean.site));
-    mount("contact-body", renderContact(clean.site));
-    mount("footer-body", renderFooter(clean.site));
-  }
-
-  if (clean.skills.length > 0) {
-    mount("skills-list", renderSkills(clean.skills));
-  } else {
-    hideSection("skills-list");
-  }
-
+  const site = clean.site;
   const projectGroups = groupProjects(clean.categories, clean.projects);
-  if (projectGroups.length > 0) {
-    mount("project-filters", sectionHeader("02", "Research & Projects") + renderProjectFilters(projectGroups));
+
+  // A section shows when at least one thing inside it has data. #about and
+  // #education each hold two independent lists, so one empty list hides only
+  // itself.
+  const shows = {
+    about: Boolean(site) || clean.skills.length > 0,
+    projects: projectGroups.length > 0,
+    experience: clean.experience.length > 0,
+    certifications: clean.certifications.length > 0,
+    education: clean.education.length > 0 || clean.publications.length > 0,
+    contact: Boolean(site),
+  };
+
+  // Numbers are assigned over the sections that actually show, in page order,
+  // so hiding one never leaves a gap (01, 02, 03, 05, 06). Sections that show
+  // nothing are hidden along with their nav link.
+  const number = {};
+  let shown = 0;
+  ["about", "projects", "experience", "certifications", "education", "contact"].forEach((id) => {
+    if (shows[id]) {
+      shown += 1;
+      number[id] = String(shown).padStart(2, "0");
+    } else {
+      hideSection(id);
+    }
+  });
+
+  if (site) {
+    mount("hero", renderHero(site));
+    applySeo(site.seo);
+    mount("footer-body", renderFooter(site));
+  } else {
+    hideMount("hero");
+    hideMount("footer-body");
+  }
+
+  if (shows.about) {
+    mount("about-body", renderAbout(site, number.about));
+    if (clean.skills.length > 0) {
+      mount("skills-list", renderSkills(clean.skills));
+    } else {
+      hideMount("skills-list");
+    }
+  }
+
+  if (shows.projects) {
+    mount(
+      "project-filters",
+      sectionHeader(number.projects, "Research & Projects") + renderProjectFilters(projectGroups)
+    );
     mount("projects-body", renderProjectGroups(projectGroups));
     initProjectFilters();
-  } else {
-    hideSection("projects-body");
   }
 
-  if (clean.experience.length > 0) {
-    mount("experience-list", renderExperience(clean.experience));
-  } else {
-    hideSection("experience-list");
+  if (shows.experience) {
+    mount("experience-list", renderExperience(clean.experience, number.experience));
   }
 
-  if (clean.certifications.length > 0) {
-    mount("certifications-list", renderCertifications(clean.certifications));
-  } else {
-    hideSection("certifications-list");
+  if (shows.certifications) {
+    mount("certifications-list", renderCertifications(clean.certifications, number.certifications));
   }
 
-  if (clean.education.length > 0) {
-    mount("education-list", renderEducation(clean.education));
-  } else {
-    hideSection("education-list");
+  if (shows.education) {
+    // The header sits above both columns, so it mounts on its own.
+    mount("education-header", sectionHeader(number.education, "Education"));
+    if (clean.education.length > 0) {
+      mount("education-list", renderEducation(clean.education));
+    } else {
+      hideMount("education-list");
+    }
+    if (clean.publications.length > 0) {
+      mount("publications-list", renderPublications(clean.publications));
+    } else {
+      hideMount("publications-list");
+    }
   }
 
-  if (clean.publications.length > 0) {
-    mount("publications-list", renderPublications(clean.publications));
+  if (shows.contact) {
+    mount("contact-body", renderContact(site, number.contact));
   }
 
   initTheme();

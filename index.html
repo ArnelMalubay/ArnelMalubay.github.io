@@ -44,6 +44,8 @@
   <link rel="stylesheet" href="styles/components.css">
 </head>
 <body>
+  <a class="skip-link visually-hidden" href="#main-content">Skip to content</a>
+
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo">Arnel Malubay</div>
@@ -57,21 +59,21 @@
       </ul>
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme"></button>
-        <button class="hamburger" id="hamburger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <button class="hamburger" id="hamburger" type="button" aria-label="Toggle navigation" aria-controls="nav-menu" aria-expanded="false">
           <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
       </div>
     </div>
   </nav>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <header class="hero container" id="hero"></header>
 
     <section class="section" id="about"><div class="container"><div id="about-body"></div><div id="skills-list"></div></div></section>
     <section class="section" id="projects"><div class="container"><div id="project-filters"></div><div id="projects-body"></div></div></section>
     <section class="section" id="experience"><div class="container"><div id="experience-list"></div></div></section>
     <section class="section" id="certifications"><div class="container"><div id="certifications-list"></div></div></section>
-    <section class="section" id="education"><div class="container education-columns"><div id="education-list"></div><div id="publications-list"></div></div></section>
+    <section class="section" id="education"><div class="container"><div id="education-header"></div><div class="education-columns"><div id="education-list"></div><div id="publications-list"></div></div></div></section>
     <section class="section" id="contact"><div class="container"><div id="contact-body"></div></div></section>
   </main>
 

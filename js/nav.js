@@ -24,6 +24,9 @@ function initNav() {
         behavior: prefersReducedMotion() ? "auto" : "smooth",
         block: "start",
       });
+      // Move focus too, so the skip link actually skips the nav for keyboard
+      // users. Sections are not focusable, so this is a no-op for nav links.
+      target.focus({ preventScroll: true });
       if (navMenu) navMenu.classList.remove("active");
       if (hamburger) {
         hamburger.classList.remove("active");
@@ -37,9 +40,10 @@ function initNav() {
 
 function initScrollSpy() {
   const links = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
+  // Hidden sections never intersect, so there is nothing to observe on them.
   const sections = links
     .map((link) => document.getElementById(link.getAttribute("href").slice(1)))
-    .filter(Boolean);
+    .filter((section) => section && !section.hidden);
   if (sections.length === 0) return;
 
   const setActive = (id) => {

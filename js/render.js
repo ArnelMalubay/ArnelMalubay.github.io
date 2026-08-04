@@ -16,10 +16,27 @@ function mount(elementId, html) {
   return element;
 }
 
-function hideSection(elementId) {
+// Hides one mount point and nothing else. Two sections hold two independent
+// mounts each (#about has #about-body + #skills-list, #education has
+// #education-list + #publications-list), so emptying one data file must not
+// take its neighbour down with it.
+function hideMount(elementId) {
   const element = document.getElementById(elementId);
-  const section = element && element.closest(".section");
+  if (!element) return;
+  element.innerHTML = "";
+  element.hidden = true;
+}
+
+// Hides a whole <section> plus the nav link that points at it, so an empty
+// section never leaves a link that highlights nothing and scrolls nowhere.
+// main.js decides which sections are empty; this only carries it out.
+function hideSection(sectionId) {
+  const section = document.getElementById(sectionId);
   if (section) section.hidden = true;
+  const link = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+  if (!link) return;
+  const item = link.closest("li");
+  (item || link).hidden = true;
 }
 
 function sectionHeader(number, title) {
@@ -46,12 +63,14 @@ function renderHero(site) {
     </div>`;
 }
 
-function renderAbout(site) {
-  if (!site || !Array.isArray(site.about)) return "";
-  return (
-    sectionHeader("01", "About") +
-    site.about.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")
-  );
+// The header renders even without paragraphs: the About section also holds
+// the skills list, which may be all that is left to show.
+function renderAbout(site, number) {
+  const paragraphs =
+    site && Array.isArray(site.about)
+      ? site.about.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")
+      : "";
+  return sectionHeader(number, "About") + paragraphs;
 }
 
 function renderSkills(groups) {
@@ -70,7 +89,7 @@ function renderSkills(groups) {
   return `<h3 class="subsection-title">Technical Skills</h3><div class="skill-groups">${rows}</div>`;
 }
 
-function renderExperience(roles) {
+function renderExperience(roles, number) {
   if (!Array.isArray(roles) || roles.length === 0) return "";
   const entries = roles
     .map((role) => {
@@ -92,10 +111,10 @@ function renderExperience(roles) {
         </article>`;
     })
     .join("");
-  return sectionHeader("03", "Experience") + `<div class="entries">${entries}</div>`;
+  return sectionHeader(number, "Experience") + `<div class="entries">${entries}</div>`;
 }
 
-function renderCertifications(items) {
+function renderCertifications(items, number) {
   if (!Array.isArray(items) || items.length === 0) return "";
   const entries = items
     .map((item) => {
@@ -114,9 +133,12 @@ function renderCertifications(items) {
         </article>`;
     })
     .join("");
-  return sectionHeader("04", "Certifications") + `<div class="entries">${entries}</div>`;
+  return sectionHeader(number, "Certifications") + `<div class="entries">${entries}</div>`;
 }
 
+// No section header here: Education and Publications sit in a two-column grid
+// and the header belongs above both, so main.js mounts it into
+// #education-header instead.
 function renderEducation(items) {
   if (!Array.isArray(items) || items.length === 0) return "";
   const entries = items
@@ -133,7 +155,7 @@ function renderEducation(items) {
       </article>`
     )
     .join("");
-  return sectionHeader("05", "Education") + `<div class="entries">${entries}</div>`;
+  return `<div class="entries">${entries}</div>`;
 }
 
 function renderPublications(items) {
@@ -157,11 +179,20 @@ function renderPublications(items) {
   return `<h3 class="subsection-title">Publications & Presentations</h3><div class="entries">${entries}</div>`;
 }
 
-function renderContact(site) {
+// "https://github.com/octocat/" -> "github.com/octocat", so the handle shown
+// on screen always comes from site.github — one place to edit.
+function prettyUrl(url) {
+  return String(url || "")
+    .replace(/^https?:\/\//i, "")
+    .replace(/^www\./i, "")
+    .replace(/\/+$/, "");
+}
+
+function renderContact(site, number) {
   if (!site) return "";
   const channels = [
-    { icon: "fas fa-envelope", label: site.email, url: `mailto:${site.email}` },
-    { icon: "fab fa-github", label: "github.com/ArnelMalubay", url: site.github },
+    { icon: "fas fa-envelope", label: site.email, url: site.email ? `mailto:${site.email}` : "" },
+    { icon: "fab fa-github", label: prettyUrl(site.github), url: site.github },
     { icon: "fab fa-linkedin", label: "LinkedIn", url: site.linkedin },
     { icon: "fas fa-file-lines", label: "Resume", url: site.resumeUrl },
   ]
@@ -175,23 +206,75 @@ function renderContact(site) {
       </li>`
     )
     .join("");
-  return (
-    sectionHeader("06", "Contact") +
-    `<p class="contact-intro">I'm open to conversations about technical AI safety research, data science roles, and research collaborations. The fastest way to reach me is email.</p>
-     <ul class="contact-list">${channels}</ul>`
-  );
+  // The intro paragraph lives in data/site.js as `contactIntro`. It is
+  // optional: an older site.js without it simply renders the links.
+  const intro = site.contactIntro
+    ? `<p class="contact-intro">${escapeHtml(site.contactIntro)}</p>`
+    : "";
+  return sectionHeader(number, "Contact") + intro + `<ul class="contact-list">${channels}</ul>`;
 }
 
 function renderFooter(site) {
   if (!site) return "";
   const year = new Date().getFullYear();
+  // Filtered like renderContact: a missing field used to render <a href="">,
+  // which reloads the page when clicked.
+  const links = [
+    { icon: "fab fa-github", label: "GitHub", url: site.github },
+    { icon: "fab fa-linkedin", label: "LinkedIn", url: site.linkedin },
+    { icon: "fas fa-envelope", label: "Email", url: site.email ? `mailto:${site.email}` : "" },
+  ]
+    .filter((link) => link.url)
+    .map(
+      (link) => `
+        <a href="${escapeHtml(link.url)}"${String(link.url).startsWith("mailto:") ? "" : ' target="_blank" rel="noopener"'} aria-label="${escapeHtml(link.label)}">
+          <i class="${escapeHtml(link.icon)}" aria-hidden="true"></i>
+        </a>`
+    )
+    .join("");
   return `
     <div class="footer-inner">
       <p class="meta">© ${year} ${escapeHtml(site.name)}</p>
-      <div class="social-links">
-        <a href="${escapeHtml(site.github)}" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-        <a href="${escapeHtml(site.linkedin)}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-        <a href="mailto:${escapeHtml(site.email)}" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-      </div>
+      ${links ? `<div class="social-links">${links}</div>` : ""}
     </div>`;
+}
+
+// Mirrors site.seo onto the page at load: <title>, the description, the
+// canonical link, and the Open Graph / Twitter tags. index.html carries the
+// same values statically because link-preview crawlers do not run JavaScript,
+// so both places matter — see README.
+function applySeo(seo) {
+  if (!seo || typeof seo !== "object") return;
+  const setContent = (selector, value) => {
+    if (!value) return;
+    const tag = document.querySelector(selector);
+    if (tag) tag.setAttribute("content", value);
+  };
+
+  if (seo.title) {
+    document.title = seo.title;
+    setContent('meta[property="og:title"]', seo.title);
+    setContent('meta[name="twitter:title"]', seo.title);
+  }
+  if (seo.description) {
+    setContent('meta[name="description"]', seo.description);
+    setContent('meta[property="og:description"]', seo.description);
+    setContent('meta[name="twitter:description"]', seo.description);
+  }
+  if (seo.canonical) {
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", seo.canonical);
+    setContent('meta[property="og:url"]', seo.canonical);
+  }
+  if (seo.ogImage) {
+    // og:image has to be absolute. A relative path is joined onto canonical
+    // rather than document.baseURI, which would be a file:/// path on disk.
+    const image = /^https?:\/\//i.test(String(seo.ogImage))
+      ? String(seo.ogImage)
+      : /^https?:\/\//i.test(String(seo.canonical || ""))
+        ? `${String(seo.canonical).replace(/\/+$/, "")}/${String(seo.ogImage).replace(/^\/+/, "")}`
+        : String(seo.ogImage);
+    setContent('meta[property="og:image"]', image);
+    setContent('meta[name="twitter:image"]', image);
+  }
 }

@@ -18,7 +18,7 @@ plain array or object. Nothing else needs to be touched.
 
 | File | Controls |
 |---|---|
-| `data/site.js` | Your name, headline, bio paragraphs, email, social links, resume URL, SEO text |
+| `data/site.js` | Your name, headline, bio paragraphs, email, social links, resume URL, the contact intro paragraph, SEO text |
 | `data/projects.js` | Project categories and every project card |
 | `data/experience.js` | Work history |
 | `data/certifications.js` | Certifications |
@@ -67,6 +67,34 @@ Copy an entry in `data/projects.js` and edit it:
 
 Other entities work the same way — array order is render order, so move an
 entry up to move it up the page.
+
+### Contact section
+
+`site.contactIntro` is the paragraph above the contact links. Leave it out and
+the section renders the links on their own. The GitHub link label is derived
+from `site.github`, so changing your handle there changes both the link and the
+text on screen.
+
+### Empty sections
+
+Emptying a data array hides only what that array feeds: `skillsData` hides the
+skills list but keeps the About paragraphs, `publicationsData` hides the
+publications list but keeps Education, and vice versa. When everything in a
+section is gone the whole section disappears along with its nav link, and the
+remaining section numbers renumber themselves so there is no gap.
+
+### SEO and link previews
+
+`site.seo` holds `title`, `description`, `canonical`, and `ogImage`. All four
+are applied to the page on load — the title, the description meta, the
+canonical link, and the Open Graph / Twitter tags. A relative `ogImage` is
+joined onto `canonical` because Open Graph requires an absolute URL.
+
+`index.html` also carries the same values as static tags in `<head>`. That
+duplication is deliberate: **link-preview crawlers (Facebook, X, LinkedIn) and
+some search crawlers do not run JavaScript, so the static tags are what they
+read.** If a preview matters to you, change both places. If only the live page
+matters, `data/site.js` is enough.
 
 ## Changing the look
 

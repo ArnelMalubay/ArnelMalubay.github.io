@@ -43,6 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
     hideSection("projects-body");
   }
 
+  if (clean.experience.length > 0) {
+    mount("experience-list", renderExperience(clean.experience));
+  } else {
+    hideSection("experience-list");
+  }
+
   initTheme();
   initNav();
   initReveal();

@@ -69,3 +69,28 @@ function renderSkills(groups) {
     .join("");
   return `<h3 class="subsection-title">Technical Skills</h3><div class="skill-groups">${rows}</div>`;
 }
+
+function renderExperience(roles) {
+  if (!Array.isArray(roles) || roles.length === 0) return "";
+  const entries = roles
+    .map((role) => {
+      const period = role.end && role.end !== role.start ? `${role.start} – ${role.end}` : role.start;
+      const bullets = (role.bullets || []).map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join("");
+      const stack = (role.stack || []).map((item) => `<li class="skill-tag">${escapeHtml(item)}</li>`).join("");
+      const company = role.url
+        ? `<a href="${escapeHtml(role.url)}" target="_blank" rel="noopener">${escapeHtml(role.company)}</a>`
+        : escapeHtml(role.company);
+      return `
+        <article class="entry reveal">
+          <p class="meta entry-period">${escapeHtml(period)}</p>
+          <div class="entry-body">
+            <h3 class="entry-title">${escapeHtml(role.role)}</h3>
+            <p class="entry-subtitle">${company}${role.location ? ` · <span class="meta">${escapeHtml(role.location)}</span>` : ""}</p>
+            <ul class="entry-bullets">${bullets}</ul>
+            ${stack ? `<ul class="skill-tags">${stack}</ul>` : ""}
+          </div>
+        </article>`;
+    })
+    .join("");
+  return sectionHeader("03", "Experience") + `<div class="entries">${entries}</div>`;
+}

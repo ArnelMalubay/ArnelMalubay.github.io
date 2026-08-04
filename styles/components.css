@@ -199,3 +199,22 @@
   gap: var(--space-2);
 }
 .project-link:hover { text-decoration: underline; }
+
+.entries { display: flex; flex-direction: column; }
+
+.entry {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--rule);
+}
+.entry:first-child { border-top: 0; padding-top: 0; }
+@media (min-width: 900px) { .entry { grid-template-columns: 180px 1fr; gap: var(--space-6); } }
+
+.entry-period { padding-top: 0.35rem; }
+.entry-body { display: flex; flex-direction: column; gap: var(--space-3); }
+.entry-title { font-size: var(--step-2); }
+.entry-subtitle { margin: 0; color: var(--ink); }
+.entry-bullets { display: flex; flex-direction: column; gap: var(--space-2); color: var(--ink-muted); }
+.entry-bullets li { padding-left: var(--space-4); position: relative; max-width: var(--measure); }
+.entry-bullets li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }

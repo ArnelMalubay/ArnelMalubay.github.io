@@ -6,6 +6,12 @@ function validatePortfolioData(data) {
   const error = (message) => issues.push({ level: "error", message });
   const warn = (message) => issues.push({ level: "warning", message });
 
+  // Guard against null, undefined, or non-object data argument
+  if (data === null || data === undefined || typeof data !== "object" || Array.isArray(data)) {
+    warn("Data argument is not a valid object");
+    return { ok: true, issues, clean: { site: undefined, categories: [], projects: [], experience: [], certifications: [], education: [], publications: [], skills: [] } };
+  }
+
   const isEmpty = (value) =>
     value === undefined ||
     value === null ||
@@ -14,6 +20,15 @@ function validatePortfolioData(data) {
 
   // Returns true when every required field is present.
   const requireFields = (label, obj, fields) => {
+    // Guard against null, undefined, or non-object entries
+    if (obj === null) {
+      error(`${label}: entry is null`);
+      return false;
+    }
+    if (obj === undefined || typeof obj !== "object") {
+      error(`${label}: expected an object, got ${typeof obj}`);
+      return false;
+    }
     let valid = true;
     for (const field of fields) {
       if (isEmpty(obj[field])) {

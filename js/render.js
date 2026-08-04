@@ -45,3 +45,27 @@ function renderHero(site) {
       <a class="btn" href="#contact">Get In Touch</a>
     </div>`;
 }
+
+function renderAbout(site) {
+  if (!site || !Array.isArray(site.about)) return "";
+  return (
+    sectionHeader("01", "About") +
+    site.about.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("")
+  );
+}
+
+function renderSkills(groups) {
+  if (!Array.isArray(groups) || groups.length === 0) return "";
+  const rows = groups
+    .map(
+      (group) => `
+      <div class="skill-group reveal">
+        <h3 class="skill-group-label meta">${escapeHtml(group.label)}</h3>
+        <ul class="skill-tags">
+          ${(group.items || []).map((item) => `<li class="skill-tag">${escapeHtml(item)}</li>`).join("")}
+        </ul>
+      </div>`
+    )
+    .join("");
+  return `<h3 class="subsection-title">Technical Skills</h3><div class="skill-groups">${rows}</div>`;
+}

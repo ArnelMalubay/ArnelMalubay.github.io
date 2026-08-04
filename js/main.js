@@ -25,6 +25,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (clean.site.seo && clean.site.seo.title) {
       document.title = clean.site.seo.title;
     }
+    mount("about-body", renderAbout(clean.site));
+  }
+
+  if (clean.skills.length > 0) {
+    mount("skills-list", renderSkills(clean.skills));
+  } else {
+    hideSection("skills-list");
   }
 
   initTheme();

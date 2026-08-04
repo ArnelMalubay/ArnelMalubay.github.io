@@ -83,6 +83,28 @@
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-4); align-items: center; }
 .social-links { display: flex; gap: var(--space-4); font-size: var(--step-1); }
 
+.subsection-title {
+  font-size: var(--step-2);
+  margin: var(--space-7) 0 var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--rule);
+}
+
+.skill-groups { display: grid; gap: var(--space-5); }
+@media (min-width: 720px) { .skill-groups { grid-template-columns: repeat(2, 1fr); gap: var(--space-5) var(--space-7); } }
+
+.skill-group-label { display: block; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: var(--space-3); }
+
+.skill-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.skill-tag {
+  font-size: var(--step--1);
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--ink);
+}
+
 /* --- responsive --- */
 @media (max-width: 720px) {
   .hamburger { display: block; }

@@ -24,7 +24,7 @@ const projectsData = [
     context: "BlueDot Impact Project Course",
     description:
       "Investigated whether subliminal learning can survive a chain of distillations, and whether mechanistic measures from the literature — such as empirical activation similarity — correlate with trait expression across hops.",
-    image: null,
+    image: "assets/multi-hop.png",
     technologies: ["PyTorch", "Transformers", "Distillation", "LoRA"],
     links: [
       { label: "Repo", url: "https://github.com/ArnelMalubay/multi-hop-subliminal-learning", icon: "fab fa-github" },

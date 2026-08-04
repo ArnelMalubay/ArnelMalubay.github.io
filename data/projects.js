@@ -40,7 +40,7 @@ const projectsData = [
     context: "Technical Alignment Research Accelerator (TARA)",
     description:
       "Replicated the subliminal emergent misalignment pipeline on a minimal rank-1 LoRA model organism. Submitted to the Reproducibility Track of BlackBoxNLP 2026.",
-    image: null,
+    image: "assets/subliminal-em.png",
     technologies: ["PyTorch", "TransformerLens", "LoRA", "Interpretability"],
     links: [
       { label: "Repo", url: "https://github.com/ArnelMalubay/tara-project-subliminal-em", icon: "fab fa-github" },

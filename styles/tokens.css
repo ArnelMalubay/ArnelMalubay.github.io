@@ -1,0 +1,58 @@
+/* Design tokens. Retune the whole site from here. */
+:root {
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --ink: #1a1815;
+  --ink-muted: #6b665c;
+  --rule: #e3dfd7;
+  --accent: #8a2b2b;
+  --accent-soft: rgba(138, 43, 43, 0.08);
+
+  /* Category tints, cycled by category index. */
+  --tint-1: rgba(138, 43, 43, 0.07);
+  --tint-2: rgba(61, 90, 110, 0.07);
+  --tint-3: rgba(94, 106, 61, 0.07);
+  --tint-4: rgba(120, 88, 46, 0.07);
+  --tint-5: rgba(90, 70, 110, 0.07);
+  --tint-6: rgba(50, 50, 50, 0.06);
+
+  --font-display: "Newsreader", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+  --step-4: clamp(2.5rem, 1.8rem + 3vw, 3.75rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 5rem;
+
+  --measure: 68ch;
+  --page-max: 1120px;
+}
+
+:root[data-theme="dark"] {
+  --bg: #14130f;
+  --surface: #1c1b17;
+  --ink: #edeae3;
+  --ink-muted: #a8a296;
+  --rule: #2e2c26;
+  --accent: #e09a8a;
+  --accent-soft: rgba(224, 154, 138, 0.1);
+
+  --tint-1: rgba(224, 154, 138, 0.08);
+  --tint-2: rgba(138, 178, 204, 0.08);
+  --tint-3: rgba(168, 188, 122, 0.08);
+  --tint-4: rgba(212, 168, 108, 0.08);
+  --tint-5: rgba(168, 148, 204, 0.08);
+  --tint-6: rgba(200, 200, 200, 0.06);
+}

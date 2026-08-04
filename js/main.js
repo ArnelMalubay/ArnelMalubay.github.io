@@ -49,6 +49,12 @@ document.addEventListener("DOMContentLoaded", function () {
     hideSection("experience-list");
   }
 
+  if (clean.certifications.length > 0) {
+    mount("certifications-list", renderCertifications(clean.certifications));
+  } else {
+    hideSection("certifications-list");
+  }
+
   initTheme();
   initNav();
   initReveal();

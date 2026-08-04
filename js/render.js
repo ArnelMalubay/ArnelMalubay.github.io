@@ -94,3 +94,25 @@ function renderExperience(roles) {
     .join("");
   return sectionHeader("03", "Experience") + `<div class="entries">${entries}</div>`;
 }
+
+function renderCertifications(items) {
+  if (!Array.isArray(items) || items.length === 0) return "";
+  const entries = items
+    .map((item) => {
+      const period = item.expires ? `${item.earned} – ${item.expires}` : item.earned;
+      const name = item.credentialUrl
+        ? `<a href="${escapeHtml(item.credentialUrl)}" target="_blank" rel="noopener">${escapeHtml(item.name)}</a>`
+        : escapeHtml(item.name);
+      return `
+        <article class="entry reveal">
+          <p class="meta entry-period">${escapeHtml(period)}</p>
+          <div class="entry-body">
+            <h3 class="entry-title entry-title-sm">${name}</h3>
+            <p class="entry-subtitle meta">${escapeHtml(item.issuer)}</p>
+            ${item.note ? `<p class="entry-note">${escapeHtml(item.note)}</p>` : ""}
+          </div>
+        </article>`;
+    })
+    .join("");
+  return sectionHeader("04", "Certifications") + `<div class="entries">${entries}</div>`;
+}

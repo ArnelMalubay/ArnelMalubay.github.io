@@ -56,7 +56,7 @@ const projectsData = [
     context: "Apart Global South AI Safety Hackathon",
     description:
       "Investigated whether persuasion is a structured internal property of LLMs rather than an artifact of prompt wording, testing both English and Tagalog setups on Gemma-SEA-LION-v4.5.",
-    image: null,
+    image: "assets/apart.png",
     technologies: ["TransformerLens", "Gemma", "Activation Analysis", "Multilingual"],
     links: [
       { label: "Repo", url: "https://github.com/ArnelMalubay/apart-global-south-persuasion-project", icon: "fab fa-github" },

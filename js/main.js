@@ -55,6 +55,16 @@ document.addEventListener("DOMContentLoaded", function () {
     hideSection("certifications-list");
   }
 
+  if (clean.education.length > 0) {
+    mount("education-list", renderEducation(clean.education));
+  } else {
+    hideSection("education-list");
+  }
+
+  if (clean.publications.length > 0) {
+    mount("publications-list", renderPublications(clean.publications));
+  }
+
   initTheme();
   initNav();
   initReveal();

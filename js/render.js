@@ -116,3 +116,43 @@ function renderCertifications(items) {
     .join("");
   return sectionHeader("04", "Certifications") + `<div class="entries">${entries}</div>`;
 }
+
+function renderEducation(items) {
+  if (!Array.isArray(items) || items.length === 0) return "";
+  const entries = items
+    .map(
+      (item) => `
+      <article class="entry reveal">
+        <p class="meta entry-period">${escapeHtml(item.start)} – ${escapeHtml(item.end)}</p>
+        <div class="entry-body">
+          <h3 class="entry-title entry-title-sm">${escapeHtml(item.degree)}</h3>
+          <p class="entry-subtitle">${escapeHtml(item.school)}${item.location ? ` · <span class="meta">${escapeHtml(item.location)}</span>` : ""}</p>
+          ${item.honors ? `<p class="entry-honors meta">${escapeHtml(item.honors)}</p>` : ""}
+          ${item.note ? `<p class="entry-note">${escapeHtml(item.note)}</p>` : ""}
+        </div>
+      </article>`
+    )
+    .join("");
+  return sectionHeader("05", "Education") + `<div class="entries">${entries}</div>`;
+}
+
+function renderPublications(items) {
+  if (!Array.isArray(items) || items.length === 0) return "";
+  const entries = items
+    .map((item) => {
+      const title = item.url
+        ? `<a href="${escapeHtml(item.url)}" target="_blank" rel="noopener">${escapeHtml(item.title)}</a>`
+        : escapeHtml(item.title);
+      return `
+        <article class="entry reveal">
+          <p class="meta entry-period">${escapeHtml(item.date)} · ${escapeHtml(item.type)}</p>
+          <div class="entry-body">
+            <h3 class="entry-title entry-title-sm">${title}</h3>
+            <p class="entry-subtitle meta">${escapeHtml(item.venue)}</p>
+            ${item.note ? `<p class="entry-note">${escapeHtml(item.note)}</p>` : ""}
+          </div>
+        </article>`;
+    })
+    .join("");
+  return `<h3 class="subsection-title">Publications & Presentations</h3><div class="entries">${entries}</div>`;
+}

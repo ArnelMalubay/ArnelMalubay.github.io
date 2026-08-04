@@ -37,11 +37,15 @@ function groupProjects(categories, projects) {
 function renderProjectFilters(groups) {
   if (groups.length === 0) return "";
   const total = groups.reduce((sum, group) => sum + group.projects.length, 0);
-  const chips = [`<button class="chip is-active" type="button" data-filter="all">All <span class="chip-count">${total}</span></button>`]
+  // aria-pressed carries the active state for screen readers; the is-active
+  // class only carries it visually. initProjectFilters keeps both in sync.
+  const chips = [
+    `<button class="chip is-active" type="button" data-filter="all" aria-pressed="true">All <span class="chip-count">${total}</span></button>`,
+  ]
     .concat(
       groups.map(
         (group) =>
-          `<button class="chip" type="button" data-filter="${escapeHtml(group.id)}">${escapeHtml(group.label)} <span class="chip-count">${group.projects.length}</span></button>`
+          `<button class="chip" type="button" data-filter="${escapeHtml(group.id)}" aria-pressed="false">${escapeHtml(group.label)} <span class="chip-count">${group.projects.length}</span></button>`
       )
     )
     .join("");
@@ -115,7 +119,11 @@ function initProjectFilters() {
   chips.forEach((chip) => {
     chip.addEventListener("click", () => {
       const filter = chip.dataset.filter;
-      chips.forEach((other) => other.classList.toggle("is-active", other === chip));
+      chips.forEach((other) => {
+        const isActive = other === chip;
+        other.classList.toggle("is-active", isActive);
+        other.setAttribute("aria-pressed", String(isActive));
+      });
       groups.forEach((group) => {
         group.hidden = filter !== "all" && group.dataset.category !== filter;
       });

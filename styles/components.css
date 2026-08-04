@@ -222,3 +222,40 @@
 .entry-title-sm { font-size: var(--step-1); }
 .entry-note { color: var(--ink-muted); margin: 0; }
 .entry-honors { color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+
+.contact-intro { font-size: var(--step-1); color: var(--ink-muted); max-width: 55ch; }
+.contact-list { display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-5); }
+.contact-link { display: inline-flex; align-items: center; gap: var(--space-3); font-family: var(--font-mono); font-size: var(--step--1); text-decoration: none; }
+.contact-link:hover { text-decoration: underline; }
+.footer p { margin: 0; }
+
+/* --- education & publications: side by side at >=900px ---
+   #education-list and #publications-list are direct children of the
+   .education-columns container (added in index.html only to the
+   Education section's .container, so no other section is affected). */
+@media (min-width: 900px) {
+  .education-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: var(--space-7);
+  }
+
+  /* At half the page width the site-wide 180px-date / body split (see
+     .entry above) leaves too little room for entry body text, so within
+     this two-column region entries stack their date above the body
+     instead, matching the layout .entry already uses below 900px. */
+  .education-columns .entry {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  /* .subsection-title's border-top/margin-top assume it follows a block
+     of Education entries. Here it opens the Publications column instead,
+     so drop the divider for this context only; the base rule is untouched. */
+  .education-columns .subsection-title {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+}

@@ -156,3 +156,42 @@ function renderPublications(items) {
     .join("");
   return `<h3 class="subsection-title">Publications & Presentations</h3><div class="entries">${entries}</div>`;
 }
+
+function renderContact(site) {
+  if (!site) return "";
+  const channels = [
+    { icon: "fas fa-envelope", label: site.email, url: `mailto:${site.email}` },
+    { icon: "fab fa-github", label: "github.com/ArnelMalubay", url: site.github },
+    { icon: "fab fa-linkedin", label: "LinkedIn", url: site.linkedin },
+    { icon: "fas fa-file-lines", label: "Resume", url: site.resumeUrl },
+  ]
+    .filter((channel) => channel.url && channel.label)
+    .map(
+      (channel) => `
+      <li>
+        <a class="contact-link" href="${escapeHtml(channel.url)}"${String(channel.url).startsWith("mailto:") ? "" : ' target="_blank" rel="noopener"'}>
+          <i class="${escapeHtml(channel.icon)}" aria-hidden="true"></i> ${escapeHtml(channel.label)}
+        </a>
+      </li>`
+    )
+    .join("");
+  return (
+    sectionHeader("06", "Contact") +
+    `<p class="contact-intro">I'm open to conversations about technical AI safety research, data science roles, and research collaborations. The fastest way to reach me is email.</p>
+     <ul class="contact-list">${channels}</ul>`
+  );
+}
+
+function renderFooter(site) {
+  if (!site) return "";
+  const year = new Date().getFullYear();
+  return `
+    <div class="footer-inner">
+      <p class="meta">© ${year} ${escapeHtml(site.name)}</p>
+      <div class="social-links">
+        <a href="${escapeHtml(site.github)}" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="${escapeHtml(site.linkedin)}" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="mailto:${escapeHtml(site.email)}" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+      </div>
+    </div>`;
+}

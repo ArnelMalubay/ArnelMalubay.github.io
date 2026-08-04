@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
       document.title = clean.site.seo.title;
     }
     mount("about-body", renderAbout(clean.site));
+    mount("contact-body", renderContact(clean.site));
+    mount("footer-body", renderFooter(clean.site));
   }
 
   if (clean.skills.length > 0) {

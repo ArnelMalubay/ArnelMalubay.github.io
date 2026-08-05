@@ -9,7 +9,7 @@ const siteData = {
   about: [
     "I'm a data scientist at Those Who Care, a healthcare analytics company based in Florida. Before moving into the industry, I also worked as a research fellow at the University of the Philippines Marine Science Institute, where I built computer vision models for phytoplankton classification.",
     "Since early 2026, I've been exploring the field of technical AI safety research. From March to July 2026, I was able to finish the Technical Alignment Research Accelerator (TARA) program, the AI safety and project courses from BlueDot Impact, and the entire ARENA curriculum.",
-    "My background is in Mathematics and Data Science. I graduated from the Ateneo de Manila University under the BS Mathematics program as a summa cum laude and program awardee. I also took my MS Data Science at the same university.",
+    "My background is in Mathematics and Data Science. I graduated from the Ateneo de Manila University in 2022 under the BS Mathematics program as a summa cum laude and program awardee. I also took my MS Data Science at the same university.",
   ],
   email: "iamarnelmalubay@gmail.com",
   github: "https://github.com/ArnelMalubay",

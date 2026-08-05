@@ -157,6 +157,14 @@ function validatePortfolioData(data) {
     if (project.category && categoryIds.size > 0 && !categoryIds.has(project.category)) {
       warn(`${label}: unknown category "${project.category}" — rendering under "Other"`);
     }
+    if (project.zoom !== undefined) {
+      const zoom = Number(project.zoom);
+      if (!Number.isFinite(zoom) || zoom <= 0) {
+        warn(`${label}: zoom must be a positive number — ignoring it and rendering at 1`);
+      } else if (zoom < 0.25 || zoom > 4) {
+        warn(`${label}: zoom ${zoom} is outside the supported 0.25–4 range — clamping`);
+      }
+    }
     if (project.links !== undefined) {
       if (!Array.isArray(project.links)) {
         error(`${label}: links must be an array`);

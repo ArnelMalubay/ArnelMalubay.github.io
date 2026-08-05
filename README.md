@@ -49,6 +49,7 @@ Copy an entry in `data/projects.js` and edit it:
   context: "Some program",       // optional, small label above the title
   description: "What it does.",  // required
   image: "assets/my-project.png",// optional — omit for a typographic panel
+  zoom: 1.4,                     // optional — see "Framing a project image" below
   technologies: ["Python"],      // optional
   links: [                       // optional, any number
     { label: "Repo", url: "https://…", icon: "fab fa-github" },
@@ -57,6 +58,24 @@ Copy an entry in `data/projects.js` and edit it:
   order: 1,                      // optional — lower renders first within its category
 },
 ```
+
+### Framing a project image
+
+Cards are a fixed 16:9 frame. By default the image fills it and anything that
+doesn't fit is cropped from the edges. `zoom` changes how much you see:
+
+| `zoom` | Result |
+|---|---|
+| omitted or `1` | Fills the frame, cropped to fit. The default. |
+| above `1` (e.g. `1.5`) | Crops in closer — useful when the subject is small or the image has wide margins. |
+| below `1` (e.g. `0.8`) | Shows the **whole** image, scaled down inside the frame, with the card surface around it. Use this for plots, diagrams, and figures you don't want cut off. |
+
+Accepted range is `0.25` to `4`; values outside it are clamped and reported by
+`node tools/check-data.js`. A non-numeric `zoom` is ignored and the card renders
+at 1, so a typo can never break the layout.
+
+Zoom is centred. If the part you want is off to one side, crop the image file
+itself — there is no pan setting.
 
 - **Remove a project:** delete its entry.
 - **Reorder:** change `order`. Ordering is per-category.

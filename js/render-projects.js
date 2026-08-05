@@ -54,9 +54,27 @@ function renderProjectFilters(groups) {
 
 // Projects without an image get a typographic panel instead — a deliberate
 // style, not a placeholder.
+// Turns a project's `zoom` into a safe CSS scale factor. Anything missing or
+// non-numeric falls back to 1, so a typo can never inject into the style
+// attribute or blank the card.
+const ZOOM_MIN = 0.25;
+const ZOOM_MAX = 4;
+
+function projectZoom(value) {
+  if (value === undefined || value === null || value === "") return 1;
+  const zoom = Number(value);
+  if (!Number.isFinite(zoom) || zoom <= 0) return 1;
+  return Math.min(Math.max(zoom, ZOOM_MIN), ZOOM_MAX);
+}
+
 function renderProjectMedia(project, tintIndex) {
   if (project.image) {
-    return `<div class="project-media"><img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" loading="lazy"></div>`;
+    const zoom = projectZoom(project.zoom);
+    // At zoom 1 the image fills the frame (object-fit: cover). Zooming past 1
+    // crops in further; below 1 it can no longer fill, so the card switches to
+    // object-fit: contain and shows the whole image instead of stretching it.
+    const attrs = zoom === 1 ? "" : ` style="--zoom: ${zoom};"${zoom < 1 ? ' data-fit="contain"' : ""}`;
+    return `<div class="project-media"${attrs}><img src="${escapeHtml(project.image)}" alt="${escapeHtml(project.title)}" loading="lazy"></div>`;
   }
   return `
     <div class="project-media project-media-fallback" style="--tint: var(--tint-${tintIndex});" aria-hidden="true">

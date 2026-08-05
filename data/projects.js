@@ -5,6 +5,8 @@
 // To remove a project:  delete its entry.
 // To reorder:           change `order` (lower renders first, within its category).
 // To add a category:    add an entry to projectCategories and use its `id`.
+// To zoom an image:     set `zoom`. 1 (default) fills the card, above 1 crops in
+//                       closer, below 1 shows the whole image. Range 0.25–4.
 //
 // Categories render in the order listed below.
 // ---------------------------------------------------------------------------
@@ -44,7 +46,7 @@ const projectsData = [
     technologies: ["PyTorch", "TransformerLens", "LoRA", "Interpretability"],
     links: [
       { label: "Repo", url: "https://github.com/ArnelMalubay/tara-project-subliminal-em", icon: "fab fa-github" },
-      { label: "Write-Up", url: "https://drive.google.com/file/d/152SmJsV93zM89aqpCmzVoDoV503iMvSL/view", icon: "fas fa-file-lines" },
+      { label: "Write-Up", url: "https://drive.google.com/file/d/1kE-ckxW1m5udZT8225ZcEhvJF0bI9o1K/view?usp=sharing", icon: "fas fa-file-lines" },
     ],
     order: 2,
   },

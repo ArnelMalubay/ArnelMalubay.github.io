@@ -49,6 +49,7 @@ const projectsData = [
       { label: "Write-Up", url: "https://drive.google.com/file/d/1kE-ckxW1m5udZT8225ZcEhvJF0bI9o1K/view?usp=sharing", icon: "fas fa-file-lines" },
     ],
     order: 2,
+    zoom: 0.98
   },
   {
     id: "persuasion-linear-bilingual",
@@ -65,6 +66,7 @@ const projectsData = [
       { label: "Write-Up", url: "https://apartresearch.com/project/we-are-convinced-that-persuasion-is-linear-and-bilingual-in-llms-jrkk", icon: "fas fa-file-lines" },
     ],
     order: 3,
+    zoom: 0.98
   },
   {
     id: "react-agent",
@@ -79,6 +81,7 @@ const projectsData = [
       { label: "GitHub", url: "https://github.com/ArnelMalubay/react-agent-ai-assistant", icon: "fab fa-github" },
     ],
     order: 1,
+    zoom: 0.99
   },
   {
     id: "pdf-explainer",
@@ -93,6 +96,7 @@ const projectsData = [
       { label: "GitHub", url: "https://github.com/ArnelMalubay/pdf-explainer-using-rag", icon: "fab fa-github" },
     ],
     order: 2,
+    zoom: 0.99
   },
   {
     id: "wavelet-cnn",
@@ -109,6 +113,7 @@ const projectsData = [
       { label: "GitHub", url: "https://github.com/ArnelMalubay/Parameter-Efficient-CNN-Using-Wavelet", icon: "fab fa-github" },
     ],
     order: 3,
+    zoom: 0.98
   },
   {
     id: "scoliosis-transfer-learning",
@@ -125,6 +130,7 @@ const projectsData = [
       { label: "GitHub", url: "https://github.com/ArnelMalubay/NAPI-Internship", icon: "fab fa-github" },
     ],
     order: 4,
+    zoom: 0.9
   },
   {
     id: "pasig-api",
@@ -139,6 +145,7 @@ const projectsData = [
       { label: "GitHub", url: "https://github.com/ArnelMalubay/pasig-full-disclosure-api", icon: "fab fa-github" },
     ],
     order: 1,
+    zoom: 0.9
   },
   {
     id: "collatz-visualizer",
@@ -153,6 +160,7 @@ const projectsData = [
       { label: "GitHub", url: "https://github.com/ArnelMalubay/collatz-gradio", icon: "fab fa-github" },
     ],
     order: 1,
+    zoom: 1
   },
   {
     id: "julia-set-visualizer",
@@ -167,6 +175,7 @@ const projectsData = [
       { label: "GitHub", url: "https://github.com/ArnelMalubay/julia-visualizer-using-gradio", icon: "fab fa-github" },
     ],
     order: 2,
+    zoom: 0.9
   },
   {
     id: "cellular-automata-markov",

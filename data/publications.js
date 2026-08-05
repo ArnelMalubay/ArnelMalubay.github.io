@@ -13,6 +13,6 @@ const publicationsData = [
     venue: "International Conference on Harmful Algae",
     date: "Nov 2023",
     type: "Presentation",
-    note: "Study exploring AI techniques for phytoplankton species classification.",
+    note: "Study was conducted during my research fellowship at the University of the Philippines Marine Science Institute.",
   },
 ];

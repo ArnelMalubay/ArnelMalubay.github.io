@@ -27,6 +27,6 @@ const certificationsData = [
     earned: "Feb 2025",
     expires: "Mar 2028",
     credentialUrl: "https://www.credly.com/badges/226f2ce1-3367-46c4-b6f3-f82994e6a121/public_url",
-    note: "Associate-level certification covering Compute Engine, Cloud Storage, Cloud Run, GKE, BigQuery, and Cloud Functions.",
+    note: "Associate-level certification covering several Google Cloud services like Compute Engine, Cloud Storage, Cloud Run, GKE, BigQuery, Cloud Functions, etc.",
   },
 ];

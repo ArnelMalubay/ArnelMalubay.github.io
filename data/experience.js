@@ -11,7 +11,7 @@ const experienceData = [
       "Built forecasting models for patient no-show predictions, achieving 95% accuracy and helping increase patient volume by 15%",
       "Conducts client-requested analysis on reimbursement rates, used for million-dollar settlement claims",
     ],
-    stack: ["Python", "BigQuery", "Vertex AI", "Apps Script", "Dataform", "Cloud Run", "Cloud Functions", "Tableau", "Looker Studio", "Zapier", "Power Automate", "Postman"],
+    stack: ["Python", "Github", "Docker", "BigQuery", "Apps Script", "Vertex AI", "Dataform", "Cloud Run", "Cloud Functions", "Looker Studio"],
   },
   {
     company: "University of the Philippines Diliman, Marine Science Institute",
@@ -23,7 +23,7 @@ const experienceData = [
       "Created AI models for automated species detection of phytoplankton images, achieving 99% accuracy and helping establish early warning systems for harmful algal blooms",
       "Built data processing workflows for phytoplankton image data, cutting processing time by more than 50%",
     ],
-    stack: ["Python", "PyTorch", "TensorFlow", "scikit-learn", "Docker", "Vertex AI", "Google Cloud Platform", "LaTeX"],
+    stack: ["Python", "PyTorch", "TensorFlow", "scikit-learn", "Docker", "Vertex AI"],
   },
   {
     company: "Cirrolytix",

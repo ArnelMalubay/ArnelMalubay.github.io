@@ -165,7 +165,7 @@ const projectsData = [
   },
   {
     id: "cellular-automata-markov",
-    title: "Cellular Automata & Markov Chain Simulation",
+    title: "Land Use Change Simulation Using Cellular Automata and Markov Chains",
     category: "other-research",
     date: "April 2023 – May 2023",
     description:

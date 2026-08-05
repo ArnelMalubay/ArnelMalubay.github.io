@@ -18,7 +18,7 @@ const siteData = {
   // Paragraph above the contact links. Optional — leave it out and the
   // section renders the links on their own.
   contactIntro:
-    "Feel free to contact me for research collaborations and other opportunities or inquiries. The fastest way to reach me is via email.",
+    "Feel free to contact me for research collaborations and other opportunities or inquiries. The fastest way to reach me is via email. Thank you!",
   seo: {
     title: "Arnel Malubay — Data Scientist & AI Safety Researcher",
     description:

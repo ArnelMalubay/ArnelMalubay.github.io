@@ -12,8 +12,8 @@
 // ---------------------------------------------------------------------------
 const projectCategories = [
   { id: "ai-safety", label: "AI Safety Research" },
-  { id: "ai-ml", label: "AI & ML Engineering" },
-  { id: "data-api", label: "Data & APIs" },
+  { id: "other-research", label: "Other Research" },
+  { id: "interactive-demos", label: "Interactive Demos" },
   { id: "math-viz", label: "Math & Visualization" },
 ];
 
@@ -71,7 +71,7 @@ const projectsData = [
   {
     id: "react-agent",
     title: "ReAct Agentic Chatbot",
-    category: "ai-ml",
+    category: "interactive-demos",
     description:
       "A ReAct agent with access to document analysis via RAG and web search through Tavily. Serves as a general-purpose chatbot for a range of tasks and queries.",
     image: "assets/chatbot.jpg",
@@ -81,13 +81,13 @@ const projectsData = [
       { label: "Demo", url: "https://huggingface.co/spaces/arnel8888/react-agent-ai-assistant", icon: "fas fa-external-link-alt" },
 
     ],
-    order: 1,
+    order: 2,
     zoom: 0.99
   },
   {
     id: "wavelet-cnn",
     title: "Parameter-Efficient CNN Using Wavelet Transforms",
-    category: "ai-ml",
+    category: "other-research",
     date: "Mar 2024",
     context: "Published in AIP Conference Proceedings",
     description:
@@ -98,13 +98,13 @@ const projectsData = [
       { label: "Repo", url: "https://github.com/ArnelMalubay/Parameter-Efficient-CNN-Using-Wavelet", icon: "fab fa-github" },
       { label: "Write-Up", url: "https://pubs.aip.org/aip/acp/article-abstract/2895/1/040012/3269703/Parameter-efficient-convolutional-neural-networks?redirectedFrom=fulltext", icon: "fas fa-file-lines" },
     ],
-    order: 3,
+    order: 1,
     zoom: 0.98
   },
   {
     id: "scoliosis-transfer-learning",
     title: "Scoliosis Identification via Transfer Learning",
-    category: "ai-ml",
+    category: "other-research",
     date: "Jan 2022",
     context: "NAIST Research Internship",
     description:
@@ -115,13 +115,13 @@ const projectsData = [
       { label: "Repo", url: "https://github.com/ArnelMalubay/NAPI-Internship", icon: "fab fa-github" },
       { label: "Write-Up", url: "https://drive.google.com/file/d/12361MbVaYKruyu9N6lP3nf-zPwxKKzBT/view?usp=sharing", icon: "fas fa-file-lines" },
     ],
-    order: 4,
+    order: 3,
     zoom: 0.9
   },
   {
     id: "pasig-api",
     title: "Pasig Full Disclosure API",
-    category: "data-api",
+    category: "interactive-demos",
     description:
       "A free-to-use REST API for Pasig City government transparency documents: resolutions, ordinances, executive orders, and bids and awards. Built with FastAPI and BeautifulSoup.",
     image: "assets/pasig.png",
@@ -140,12 +140,12 @@ const projectsData = [
     description:
       "A Gradio app that visualizes the paths numbers take under the Collatz rule; an interactive exploration of the conjecture with configurable visualizations.",
     image: "assets/collatz-viz.jpg",
-    technologies: ["Python", "Gradio", "Mathematics", "Visualization"],
+    technologies: ["Python", "Gradio", "Number Theory", "Mathematics"],
     links: [
       { label: "Repo", url: "https://github.com/ArnelMalubay/collatz-gradio", icon: "fab fa-github" },
       { label: "Demo", url: "https://huggingface.co/spaces/arnel8888/collatz-branches-visualizer", icon: "fas fa-external-link-alt" },
     ],
-    order: 1,
+    order: 2,
     zoom: 1
   },
   {
@@ -160,13 +160,14 @@ const projectsData = [
       { label: "Repo", url: "https://github.com/ArnelMalubay/julia-visualizer-using-gradio", icon: "fab fa-github" },
       { label: "Demo", url: "https://huggingface.co/spaces/arnel8888/julia-set-visualizer", icon: "fas fa-external-link-alt" },
     ],
-    order: 2,
-    zoom: 0.9
+    order: 1,
+    zoom: 1
   },
   {
     id: "cellular-automata-markov",
     title: "Cellular Automata & Markov Chain Simulation",
-    category: "math-viz",
+    category: "other-research",
+    date: "April 2023 – May 2023",
     description:
       "A land use change simulation built on cellular automata and Markov chains, applying spatial modelling techniques to forecasting.",
     image: "assets/land-change.png",
@@ -175,6 +176,6 @@ const projectsData = [
       { label: "Repo", url: "https://github.com/ArnelMalubay/Cellular-Automata-And-Markov-Chain-Simulation", icon: "fab fa-github" },
       { label: "Write-Up", url: "https://drive.google.com/file/d/1jpvSGi6sNMaVF8NIaH6awOTyN5Py1f-F/view?usp=sharing", icon: "fas fa-file-lines" },
     ],
-    order: 3,
+    order: 2,
   },
 ];

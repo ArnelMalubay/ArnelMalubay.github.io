@@ -25,9 +25,9 @@ const projectsData = [
     date: "Jun 2026 – Jul 2026",
     context: "BlueDot Impact Project Course",
     description:
-      "Investigated whether subliminal learning can survive a chain of distillations, and whether mechanistic measures from the literature — such as empirical activation similarity — correlate with trait expression across hops.",
+      "Investigated whether subliminal learning can survive a chain of distillations, and whether mechanistic measures from literature (e.g. empirical activation similarity) correlate with trait expression across hops.",
     image: "assets/multi-hop.png",
-    technologies: ["PyTorch", "Transformers", "Distillation", "LoRA"],
+    technologies: ["Distillation", "LoRA", "Fine-Tuning", "Mechanistic Interpretability"],
     links: [
       { label: "Repo", url: "https://github.com/ArnelMalubay/multi-hop-subliminal-learning", icon: "fab fa-github" },
       { label: "Write-Up", url: "https://drive.google.com/file/d/13bvkn6Ml28VuCPDnYmG7nfzhKHLcxkjM/view", icon: "fas fa-file-lines" },
@@ -43,7 +43,7 @@ const projectsData = [
     description:
       "Replicated the subliminal emergent misalignment pipeline on a minimal rank-1 LoRA model organism. Submitted to the Reproducibility Track of BlackBoxNLP 2026.",
     image: "assets/subliminal-em.png",
-    technologies: ["PyTorch", "TransformerLens", "LoRA", "Interpretability"],
+    technologies: ["Distillation", "LoRA", "Fine-Tuning", "Steering", "Ablation", "Mechanistic Interpretability"],
     links: [
       { label: "Repo", url: "https://github.com/ArnelMalubay/tara-project-subliminal-em", icon: "fab fa-github" },
       { label: "Write-Up", url: "https://drive.google.com/file/d/1kE-ckxW1m5udZT8225ZcEhvJF0bI9o1K/view?usp=sharing", icon: "fas fa-file-lines" },
@@ -60,7 +60,7 @@ const projectsData = [
     description:
       "Investigated whether persuasion is a structured internal property of LLMs rather than an artifact of prompt wording, testing both English and Tagalog setups on Gemma-SEA-LION-v4.5.",
     image: "assets/apart.png",
-    technologies: ["TransformerLens", "Gemma", "Activation Analysis", "Multilingual"],
+    technologies: ["Activation Analysis", "Mechanistic Interpretability", "Steering", "LLM Evaluation"],
     links: [
       { label: "Repo", url: "https://github.com/ArnelMalubay/apart-global-south-persuasion-project", icon: "fab fa-github" },
       { label: "Write-Up", url: "https://apartresearch.com/project/we-are-convinced-that-persuasion-is-linear-and-bilingual-in-llms-jrkk", icon: "fas fa-file-lines" },
@@ -77,25 +77,11 @@ const projectsData = [
     image: "assets/chatbot.jpg",
     technologies: ["Python", "LangGraph", "Gradio", "Groq", "Tavily"],
     links: [
-      { label: "Try it Out!", url: "https://huggingface.co/spaces/arnel8888/react-agent-ai-assistant", icon: "fas fa-external-link-alt" },
-      { label: "GitHub", url: "https://github.com/ArnelMalubay/react-agent-ai-assistant", icon: "fab fa-github" },
+      { label: "Repo", url: "https://github.com/ArnelMalubay/react-agent-ai-assistant", icon: "fab fa-github" },
+      { label: "Demo", url: "https://huggingface.co/spaces/arnel8888/react-agent-ai-assistant", icon: "fas fa-external-link-alt" },
+
     ],
     order: 1,
-    zoom: 0.99
-  },
-  {
-    id: "pdf-explainer",
-    title: "PDF Explainer using RAG",
-    category: "ai-ml",
-    description:
-      "A Gradio app for uploading PDF documents and asking questions about them using an LLM with retrieval-augmented generation. Built for quick document analysis and information extraction.",
-    image: "assets/pdf-explainer.jpg",
-    technologies: ["Python", "Gradio", "RAG", "LLM"],
-    links: [
-      { label: "Try it Out!", url: "https://huggingface.co/spaces/arnel8888/pdf-explainer-using-RAG", icon: "fas fa-external-link-alt" },
-      { label: "GitHub", url: "https://github.com/ArnelMalubay/pdf-explainer-using-rag", icon: "fab fa-github" },
-    ],
-    order: 2,
     zoom: 0.99
   },
   {
@@ -109,8 +95,8 @@ const projectsData = [
     image: "assets/wavelet-cnn.jpg",
     technologies: ["Python", "Deep Learning", "CNN", "Wavelet Transforms"],
     links: [
-      { label: "Read it Here!", url: "https://pubs.aip.org/aip/acp/article-abstract/2895/1/040012/3269703/Parameter-efficient-convolutional-neural-networks?redirectedFrom=fulltext", icon: "fas fa-file-lines" },
-      { label: "GitHub", url: "https://github.com/ArnelMalubay/Parameter-Efficient-CNN-Using-Wavelet", icon: "fab fa-github" },
+      { label: "Repo", url: "https://github.com/ArnelMalubay/Parameter-Efficient-CNN-Using-Wavelet", icon: "fab fa-github" },
+      { label: "Write-Up", url: "https://pubs.aip.org/aip/acp/article-abstract/2895/1/040012/3269703/Parameter-efficient-convolutional-neural-networks?redirectedFrom=fulltext", icon: "fas fa-file-lines" },
     ],
     order: 3,
     zoom: 0.98
@@ -126,8 +112,8 @@ const projectsData = [
     image: "assets/scoliosis.png",
     technologies: ["Python", "Deep Learning", "CNN", "Transfer Learning", "Computer Vision"],
     links: [
-      { label: "Read it Here!", url: "https://drive.google.com/file/d/12361MbVaYKruyu9N6lP3nf-zPwxKKzBT/view?usp=sharing", icon: "fas fa-file-lines" },
-      { label: "GitHub", url: "https://github.com/ArnelMalubay/NAPI-Internship", icon: "fab fa-github" },
+      { label: "Repo", url: "https://github.com/ArnelMalubay/NAPI-Internship", icon: "fab fa-github" },
+      { label: "Write-Up", url: "https://drive.google.com/file/d/12361MbVaYKruyu9N6lP3nf-zPwxKKzBT/view?usp=sharing", icon: "fas fa-file-lines" },
     ],
     order: 4,
     zoom: 0.9
@@ -137,12 +123,12 @@ const projectsData = [
     title: "Pasig Full Disclosure API",
     category: "data-api",
     description:
-      "A free-to-use REST API for Pasig City government transparency documents — resolutions, ordinances, executive orders, and bids and awards. Built with FastAPI and BeautifulSoup.",
+      "A free-to-use REST API for Pasig City government transparency documents: resolutions, ordinances, executive orders, and bids and awards. Built with FastAPI and BeautifulSoup.",
     image: "assets/pasig.png",
     technologies: ["Python", "FastAPI", "BeautifulSoup", "Web Scraping"],
     links: [
-      { label: "Try it Out!", url: "https://arnel8888-pasig-full-disclosure-api.hf.space/docs#/", icon: "fas fa-external-link-alt" },
-      { label: "GitHub", url: "https://github.com/ArnelMalubay/pasig-full-disclosure-api", icon: "fab fa-github" },
+      { label: "Repo", url: "https://github.com/ArnelMalubay/pasig-full-disclosure-api", icon: "fab fa-github" },
+      { label: "Demo", url: "https://arnel8888-pasig-full-disclosure-api.hf.space/docs#/", icon: "fas fa-external-link-alt" },
     ],
     order: 1,
     zoom: 0.9
@@ -152,12 +138,12 @@ const projectsData = [
     title: "Collatz Conjecture Visualizer",
     category: "math-viz",
     description:
-      "A Gradio app that visualizes the paths numbers take under the Collatz rule — an interactive exploration of the conjecture with configurable visualizations.",
+      "A Gradio app that visualizes the paths numbers take under the Collatz rule; an interactive exploration of the conjecture with configurable visualizations.",
     image: "assets/collatz-viz.jpg",
     technologies: ["Python", "Gradio", "Mathematics", "Visualization"],
     links: [
-      { label: "Try it Out!", url: "https://huggingface.co/spaces/arnel8888/collatz-branches-visualizer", icon: "fas fa-external-link-alt" },
-      { label: "GitHub", url: "https://github.com/ArnelMalubay/collatz-gradio", icon: "fab fa-github" },
+      { label: "Repo", url: "https://github.com/ArnelMalubay/collatz-gradio", icon: "fab fa-github" },
+      { label: "Demo", url: "https://huggingface.co/spaces/arnel8888/collatz-branches-visualizer", icon: "fas fa-external-link-alt" },
     ],
     order: 1,
     zoom: 1
@@ -171,8 +157,8 @@ const projectsData = [
     image: "assets/julia-sets.png",
     technologies: ["Python", "Gradio", "Fractals", "Mathematics"],
     links: [
-      { label: "Try it Out!", url: "https://huggingface.co/spaces/arnel8888/julia-set-visualizer", icon: "fas fa-external-link-alt" },
-      { label: "GitHub", url: "https://github.com/ArnelMalubay/julia-visualizer-using-gradio", icon: "fab fa-github" },
+      { label: "Repo", url: "https://github.com/ArnelMalubay/julia-visualizer-using-gradio", icon: "fab fa-github" },
+      { label: "Demo", url: "https://huggingface.co/spaces/arnel8888/julia-set-visualizer", icon: "fas fa-external-link-alt" },
     ],
     order: 2,
     zoom: 0.9
@@ -186,8 +172,8 @@ const projectsData = [
     image: "assets/land-change.png",
     technologies: ["Python", "Cellular Automata", "Markov Chains", "Simulation"],
     links: [
-      { label: "Read it Here!", url: "https://drive.google.com/file/d/1jpvSGi6sNMaVF8NIaH6awOTyN5Py1f-F/view?usp=sharing", icon: "fas fa-file-lines" },
-      { label: "GitHub", url: "https://github.com/ArnelMalubay/Cellular-Automata-And-Markov-Chain-Simulation", icon: "fab fa-github" },
+      { label: "Repo", url: "https://github.com/ArnelMalubay/Cellular-Automata-And-Markov-Chain-Simulation", icon: "fab fa-github" },
+      { label: "Write-Up", url: "https://drive.google.com/file/d/1jpvSGi6sNMaVF8NIaH6awOTyN5Py1f-F/view?usp=sharing", icon: "fas fa-file-lines" },
     ],
     order: 3,
   },
